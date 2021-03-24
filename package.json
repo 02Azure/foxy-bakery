@@ -1,0 +1,32 @@
+{
+  "name": "tempname-pairproject",
+  "version": "1.0.0",
+  "description": "Tugas akhir p1 - Pair Project\r # Nama Aplikasi",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/02Azure/tempname-pairproject.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/02Azure/tempname-pairproject/issues"
+  },
+  "homepage": "https://github.com/02Azure/tempname-pairproject#readme",
+  "dependencies": {
+    "bcryptjs": "^2.4.3",
+    "ejs": "^3.1.6",
+    "express": "^4.17.1",
+    "express-session": "^1.17.1",
+    "pg": "^8.5.1",
+    "sequelize": "^6.6.2"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.7",
+    "sequelize-cli": "^6.2.0"
+  }
+}
