@@ -1,7 +1,7 @@
 {
-  "name": "tempname-pairproject",
+  "name": "foxybakery",
   "version": "1.0.0",
-  "description": "Tugas akhir p1 - Pair Project\r # Nama Aplikasi",
+  "description": "Tugas akhir p1 - Pair Project",
   "main": "server.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"

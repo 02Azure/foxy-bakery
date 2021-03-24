@@ -1,8 +1,8 @@
 {
   "development": {
     "username": "postgres",
-    "password": "postgres"
-    "database": "pairprojectdb",
+    "password": "postgres",
+    "database": "foxybakerydb",
     "host": "localehost",
     "dialect": "postgres"
   },
