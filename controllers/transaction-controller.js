@@ -1,6 +1,20 @@
+const {Transaction, Item} = require("../models")
+
 class TransController {
 	static showAll(req, res) {
-		res.send("Menampilkan history transaction untuk user id ini. id user dapat dari session")
+	// 	Transaction.findAll({
+  //     include: Item,
+  //     order: ["date"]
+  //   }) 
+  //     .then(data => {
+  //       res.render("transactions", {transactions: data})
+  //     })
+
+  //     .catch(err => {
+  //       res.send(err)
+  //     })
+    let data = transactions
+     res.render("transactions", {transactions: data})
 	}
 	
 	static showEditPage(req, res) {
@@ -8,15 +22,47 @@ class TransController {
 	}
 	
 	static editTrans(req, res) {
-		res.send("Mengubah transaksi ini. hanya dapat dilakukan pada status paid: false")
+    // Transaction.findByPk(+req.params.id, {
+    //   include: Item
+    // })
+    //   .then(data => {
+    //     res.render("transaction-edit", {items: data})
+    //   })
+
+    //   .catch(err => {
+    //     res.send(err)
+    //   })
+		// res.send("Mengubah transaksi ini. hanya dapat dilakukan pada status paid: false")
 	}
 	
 	static deleteTrans(req, res) {
-	  res.send("Membatalkan transaksi. hanya dapat dilakukan pada status paid: false")
+	  // Transaction.destroy({
+    //   where: {
+    //     id: +req.params.id
+    //   }
+    // })
+    //   .then(data => {
+    //     res.redirect("/transactions")
+    //   })
+
+    //   .catch(err => {
+    //     res.send(err)
+    //   })
 	}
 	
 	static pay(req, res) {
-	  res.send("Mengubah status transaksi paid menjadi true")
+	//   Transaction.update({isPaid: true}, {
+  //     where: {
+  //       id: +req.params.id
+  //     }
+  //   })
+  //     .then(data => {
+  //       res.redirect("/transactions")
+  //     })
+
+  //     .catch(err => {
+  //       res.send(err)
+  //     })
 	}
 }
 
