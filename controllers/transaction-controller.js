@@ -2,7 +2,11 @@ const {Transaction, Item} = require("../models")
 
 class TransController {
 	static showAll(req, res) {
+    console.log(req.session.userId)
 		Transaction.findAll({
+      where: {
+        UserId: +req.session.userId
+      },
       include: Item,
       order: ["date"]
     }) 
