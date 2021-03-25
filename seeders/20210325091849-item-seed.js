@@ -27,7 +27,7 @@ module.exports = {
       {
         name: "3-in-1-Dougnut",
         price: 45000,
-        desc: "3 Dooughnuts with one purchase! Each one representing your run-of-the-mill main element in most RPG! ",
+        desc: "3 Doughnuts with one purchase! Each one representing your run-of-the-mill main element in most RPG! ",
         createdAt: new Date(),
         updatedAt: new Date()
       }
