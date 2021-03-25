@@ -33,7 +33,7 @@ class ShopController {
 		}
 
 		Transaction.create({
-			UserId: 1,//+session.userid
+			UserId: +req.session.userId,
 			date: new Date(),
 			isPaid: false
 		})
