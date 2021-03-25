@@ -8,7 +8,7 @@
     <a href="/logout"><h3>Logout</h3></a>
     <form action="/shop" method="post">
       <%items.forEach(item => {%>
-       <label for="<%=`item${item.id}`%>"><%=item.name%> @Rp. <%=item.price%></label><br>
+       <label for="<%=`item${item.id}`%>"><%=item.name%> <%=item.harga()%></label><br>
        <p><%=item.desc%></p>
        <input type="number" id="<%=`item${item.id}`%>" name="<%=item.id%>" value=0><br><br><br> 
       <%})%>
