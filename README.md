@@ -1,4 +1,6 @@
 Tugas akhir p1 - Pair Project
-# Nama Aplikasi
+# Foxy Bakery
 
--penjelasan singkat
+- App toko sederhana Foxy Bakery
+
+

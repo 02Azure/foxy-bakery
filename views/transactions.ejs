@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+  <%- include("components/head", {title: "Foxy Bakery - Transactions History"}); %>
+
+  <body>
+    <h1>Transactions History</h1>
+    <%- include("components/nav"); %>
+    <a href="/transactions/stats"><h3>View My Activity Chart</h3></a>
+    <table>
+      <tr>
+        <th>ID</th>
+        <th>Purchase Date</th>
+        <th>Total</th>
+        <th>Status/Action</th>
+      </tr>
+
+      <%transactions.forEach(transaction => {%>
+        <tr>
+          <td><%=transaction.id%></td>
+          <td><%=transaction.date%></td>
+          <td>       
+          <%let totalPurchase = transaction.Items%>
+          <%let total =0%>
+          <%totalPurchase.forEach(trans => {%>
+            <%total += trans.price * trans.TransactionItem.amount%>
+           <%})%>
+            <%=total%>
+          </td>
+          <td>
+            <%if(transaction.isPaid) {%>
+              <b>Paid</b>
+            <%} else {%>
+              <a href="<%=`transactions/pay/${transaction.id}`%>"><button>Pay</button></a>
+              <a href="<%=`transactions/edit/${transaction.id}`%>"><button>Change Order</button></a>
+              <a href="<%=`transactions/delete/${transaction.id}`%>"><button>Cancel Order</button></a>
+            <%}%>
+          </td> 
+      <%})%>
+
+    </table> 
+
+  </body>
+
+  
+</html>

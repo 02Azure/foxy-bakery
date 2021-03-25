@@ -1,0 +1,131 @@
+<!DOCTYPE HTML>
+
+<html lang="id">
+
+<head>
+  <title>User Stats</title>
+  <meta charset="UTF-8">
+  <link rel="stylesheet" href="/public/css/chart.css">
+  <script src="https://d3js.org/d3.v6.min.js"></script>
+</head>
+
+<main>
+  <div id="container">
+    <div id="svgContainer">
+      <h1 id="title">User Purchase History</h1>
+      <svg id="bar-chart"></svg>
+      <div id="tooltip"></div>
+
+
+<script>
+
+const	graphHeight = 500;
+const graphWidth = 800
+const paddingLeft = 60;
+const paddingBottom = 40;
+const paddingTop = 20;
+const paddingRight = 20;
+
+let totalPurchase = [216000, 100000, 232000, 120000, 300000]
+let transferDate = [
+  new Date("2021-02-02T10:53:54Z"),
+
+  new Date("2021-02-08T11:13:54Z"),
+
+  new Date("2021-02-22T11:41:14Z"),
+
+  new Date("2021-03-01T04:53:32Z"),
+
+  new Date("2021-03-12T10:03:14Z"),
+
+]
+
+// let transferDate = transactions.map(trans => trans.dataValues.date)
+// let totalPurchase = transactions.map(trans => trans.Items)
+
+// totalPurchase = totalPurchase.map(trans => {
+//   let total = 0
+
+//   trans.forEach(item => {
+//     total += item.price * item.TransactionItem.amount
+//   })
+
+//   return total
+// })
+
+
+const barWidth = ((graphWidth - paddingLeft - paddingRight) / totalPurchase.length)
+const xMin = new Date(d3.min(transferDate));
+const xMax = new Date(d3.max(transferDate));
+// xMax.setMonth(10)
+
+const scaleX = d3.scaleTime().domain([xMin, xMax]).range([paddingLeft, graphWidth - paddingRight]);
+const scaleY = d3.scaleLinear().domain([0, d3.max(totalPurchase)]).range([graphHeight - paddingBottom, paddingTop]);
+const yAxis = d3.axisLeft(scaleY);
+const xAxis = d3.axisBottom().scale(scaleX);
+
+var chartTooltip = d3.select("#tooltip")
+
+function showTooltip(index){
+  chartTooltip.html("Total: Rp. "+ totalPurchase[index] + "<br>Date: " + transferDate[index].toUTCString().slice(0,25))
+              .style("opacity", "0.95")
+
+  if(index * barWidth + paddingLeft + 140 < graphWidth - paddingRight) {
+    chartTooltip.style("left", index * barWidth + paddingLeft + 30 + "px")
+
+  } else {
+    chartTooltip.style("left", index * barWidth + paddingLeft - 150 + "px")
+  }
+}
+
+var chartBar = d3.select("svg")
+                .selectAll("rect")
+                .data(totalPurchase)
+                .enter().append("rect")
+                .attr("x", (data, index) => index * barWidth + paddingLeft)
+                .attr("y", data => scaleY(data))
+                .attr("width", 0.8 * barWidth)
+                .attr("height", data => graphHeight - paddingBottom - scaleY(data))
+                .attr("class", "bar")
+                .on("mouseover", function(event, data){
+                  const i = chartBar.nodes().indexOf(this)
+                  showTooltip(i)
+                })
+                .on("mouseout", () => {chartTooltip.style("opacity", "0")})
+
+
+var chartYAxis = d3.select("svg")
+                    .append("g")
+                    .call(yAxis)
+                    .attr("transform", `translate(${paddingLeft}, 0)`)
+                    .attr("id", "y-axis")
+                    
+var chartYAxisTitle = d3.select("svg")
+                          .append("text")
+                          .text("Total Transfer (Rupiah)")
+                          .attr("transform", "rotate(-90)")
+                          .attr("x", -graphHeight / 1.25)
+                          .attr("y", paddingLeft + 20)
+                          .attr("id", "y-axisTitle")
+                    
+var chartXAxis = d3.select("svg")
+                    .append("g")
+                    .call(xAxis)
+                    .attr("transform", `translate(0, ${graphHeight - paddingBottom})`)
+                    .attr("id", "x-axis")
+
+var chartXAxisTitle = d3.select("svg")
+                        .append("text")
+                        .text("Year")
+                        .attr("transform", `translate(${graphWidth / 2}, ${graphHeight-paddingBottom + 40})`)
+                        .attr("id", "x-axisTitle")
+
+
+
+</script>
+
+    </div>
+  </div>
+</main>
+
+</html>
