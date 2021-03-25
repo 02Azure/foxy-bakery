@@ -7,6 +7,7 @@ class TransController {
 			order: ["date"]
 		})
 			.then(data => {
+				// console.log(data.Trancation.Items);
 				res.render("transactions", { transactions: data })
 			})
 

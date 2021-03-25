@@ -34,7 +34,7 @@ class ShopController {
 
 		Transaction.create({
 			UserId: 1,//+session.userid
-			date: new Date(),
+			// date: new Date(),
 			isPaid: false
 		})
 			.then(data => {

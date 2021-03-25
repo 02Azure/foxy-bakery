@@ -12,6 +12,9 @@ module.exports = (sequelize, DataTypes) => {
     static associate(models) {
       Item.belongsToMany(models.Transaction, {through: models.TransactionItem})
     }
+    harga() {
+      return `Rp ${this.price}`
+    }
   };
   Item.init({
     name: DataTypes.STRING,
