@@ -1,9 +1,9 @@
 {
   "development": {
     "username": "postgres",
-    "password": "postgres",
+    "password": 12345,
     "database": "foxybakerydb",
-    "host": "localehost",
+    "host": "localhost",
     "dialect": "postgres"
   },
   "test": {
