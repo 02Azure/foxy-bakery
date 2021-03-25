@@ -1,0 +1,49 @@
+h1{
+  text-align:center;
+  font-size:1.5em;
+}
+
+html{
+  background-color:azure;
+}
+
+#container{
+  display:flex;
+  justify-content:center;
+}
+
+#svgContainer{
+  position:relative;
+  overflow-x:auto;
+}
+
+#bar-chart{
+  width:850px;
+  height:500px;
+  border:solid black 1px;
+  background-color:whitesmoke;
+}
+.bar{
+  fill:blue;
+  transition:fill 0.25s;
+}
+
+.bar:hover{
+  fill:cyan;
+}
+
+#tooltip{
+  width:120px;
+  height:50px;
+  position:absolute;
+  top:350px;
+  border:solid black 2px;
+  background-color:yellow;
+  opacity:0;
+  padding:3px;
+  text-align:center;
+  font-size:0.85em;
+  pointer-events:none;
+  transition:opacity 0.5s;
+  
+} 
