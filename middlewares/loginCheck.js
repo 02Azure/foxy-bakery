@@ -1,5 +1,5 @@
 function loginCheck (req, res, next) {
-  if(res.session.isLoggedIn) {
+  if(req.session.isLoggedIn) {
     next()
   } else {
     res.redirect("/")

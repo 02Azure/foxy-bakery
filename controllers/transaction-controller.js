@@ -2,21 +2,23 @@ const { Transaction, Item, TransactionItem } = require("../models")
 
 class TransController {
 	static showAll(req, res) {
+    console.log(req.session.userId)
 		Transaction.findAll({
-			include: Item,
-			order: ["date"]
-		})
-			.then(data => {
-				res.render("transactions", { transactions: data })
-			})
-
-			.catch(err => {
-				res.send(err)
-			})
+      where: {
+        UserId: +req.session.userId
+      },
+      include: Item,
+      order: ["date"]
+    }) 
+      .then(data => {
+        res.render("transactions", {transactions: data})
+      })
+      .catch(err => {
+        res.send(err)
+      })
 	}
 
 	static showEditPage(req, res) {
-
 		Transaction.findOne({
 			where: ({
 				id: req.params.id
