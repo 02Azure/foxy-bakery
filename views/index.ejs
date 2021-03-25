@@ -3,7 +3,15 @@
   <%- include("components/head", {title: "Foxy Bakery"}); %>
 
   <body>
-    <h1>Ini Landing Page</h1>
+    <h1>Login</h1>
+
+    <form action="/login" method="post">
+      <label for="fname">First name:</label>
+      <input type="text" id="fname" name="fname"><br><br>
+      <label for="lname">Last name:</label>
+      <input type="text" id="lname" name="lname"><br><br>
+      <input type="submit" value="Submit">
+    </form> 
   </body>
 
   

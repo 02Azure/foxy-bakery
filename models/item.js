@@ -2,6 +2,7 @@
 const {
   Model
 } = require('sequelize');
+const { showAllItems } = require('../controllers/shop-controller');
 module.exports = (sequelize, DataTypes) => {
   class Item extends Model {
     /**
@@ -10,7 +11,7 @@ module.exports = (sequelize, DataTypes) => {
      * The `models/index` file will call this method automatically.
      */
     static associate(models) {
-      // define association here
+      Item.belongsToMany(models.Transaction, {through: models.TransactionItem})
     }
   };
   Item.init({
