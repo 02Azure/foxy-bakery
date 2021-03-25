@@ -7,7 +7,7 @@ class TransController {
         UserId: +req.session.userId
       },
       include: Item,
-      order: ["date"]
+      order: [["date", "DESC"]]
     }) 
       .then(data => {
         res.render("transactions", {transactions: data})
@@ -82,6 +82,22 @@ class TransController {
 				res.send(err)
 			})
 	}
+
+  static showStats(req, res) {
+    Transaction.findAll({
+      where: {
+        UserId: +req.session.userId,
+        isPaid: true
+      },
+      include: Item
+    }) 
+      .then(data => {
+        res.render("transaction-stats", {data: data})
+      })
+      .catch(err => {
+        res.send(err)
+      })
+  }
 }
 
 module.exports = TransController
