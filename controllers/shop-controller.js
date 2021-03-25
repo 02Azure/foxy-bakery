@@ -10,7 +10,6 @@ class ShopController {
         .catch(err => {
           res.send(err)
         })
-
 	}
 
 	static checkout(req, res) {

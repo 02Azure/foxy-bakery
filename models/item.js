@@ -2,7 +2,6 @@
 const {
   Model
 } = require('sequelize');
-const { showAllItems } = require('../controllers/shop-controller');
 module.exports = (sequelize, DataTypes) => {
   class Item extends Model {
     /**
