@@ -6,6 +6,8 @@ const transaction = require("./transactions-route")
 
 router.get('/', IndexController.showMainPage)
 
+router.post("login", IndexController.login)
+
 router.use("/shop", shop)
 router.use("/transactions", transaction)
 

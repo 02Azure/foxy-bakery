@@ -3,7 +3,7 @@
     "username": "postgres",
     "password": "postgres",
     "database": "foxybakerydb",
-    "host": "localehost",
+    "host": "localhost",
     "dialect": "postgres"
   },
   "test": {

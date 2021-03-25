@@ -1,6 +1,18 @@
+const {Transaction, Item} = require("../models")
+
 class TransController {
 	static showAll(req, res) {
-		res.send("Menampilkan history transaction untuk user id ini. id user dapat dari session")
+		Transaction.findAll({
+      include: Item,
+      order: ["date"]
+    }) 
+      .then(data => {
+        res.render("transactions", {transactions: data})
+      })
+
+      .catch(err => {
+        res.send(err)
+      })
 	}
 	
 	static showEditPage(req, res) {
@@ -8,15 +20,23 @@ class TransController {
 	}
 	
 	static editTrans(req, res) {
+    // Transaction.findByPk(+req.params.id, {
+    //   include: Item
+    // })
+
 		res.send("Mengubah transaksi ini. hanya dapat dilakukan pada status paid: false")
 	}
 	
 	static deleteTrans(req, res) {
-	  res.send("Membatalkan transaksi. hanya dapat dilakukan pada status paid: false")
+	  // Transaction.destroy({
+
 	}
 	
 	static pay(req, res) {
-	  res.send("Mengubah status transaksi paid menjadi true")
+	//   Transaction.update({isPaid: true}, {
+  //     where: {
+  //       id: +req.params.id
+
 	}
 }
 

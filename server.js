@@ -1,9 +1,20 @@
 const express = require('express')
 const app = express()
+const session = require("express-session")
 const port = 3000
 const index = require("./routes/index-route")
 
 app.set("view engine", "ejs")
+app.use(session({
+  secret: 'foxybakery',
+  resave: false,
+  saveUninitialized: true
+}))
+
+app.use((req, res, next) => {
+  console.log("this is session", req.session)
+  next()
+})
 app.use(express.urlencoded({extended: true}))
 app.use("/public", express.static("public"))
 
