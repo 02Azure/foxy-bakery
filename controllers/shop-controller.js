@@ -33,9 +33,7 @@ class ShopController {
 		}
 
 		Transaction.create({
-			UserId: +req.session.userId,
-			date: new Date(),
-			isPaid: false
+			UserId: +req.session.userId
 		})
 			.then(data => {
 				boughtItems.forEach(item => item.TransactionId = data.id)

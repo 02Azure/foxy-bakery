@@ -23,9 +23,8 @@ module.exports = (sequelize, DataTypes) => {
     modelName: 'Transaction',
   })
   Transaction.beforeCreate((trans, option) => {
-    if(!trans.date) {
-      trans.date = new Date()
-    }
+    trans.date = new Date()
+    trans.isPaid = false
   })
   return Transaction;
 };
