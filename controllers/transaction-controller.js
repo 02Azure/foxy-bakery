@@ -2,7 +2,6 @@ const { Transaction, Item, TransactionItem } = require("../models")
 
 class TransController {
 	static showAll(req, res) {
-    console.log(req.session.userId)
 		Transaction.findAll({
       where: {
         UserId: +req.session.userId
@@ -27,21 +26,17 @@ class TransController {
 		})
 
 			.then(data => {
-				console.log(data.id)
 				res.render("editTransaction", { data })
 			})
 			.catch(err => {
 				res.send(err)
 			})
-
-		// res.send("Menampilkan form edit yg isinya list item yg ada di transaksi, sudah terpopulate. Hanya bisa dilakukan pada status paid: false")
-
 	}
 
 	static editTrans(req, res) {
 		let values = Object.values(req.body)
 		let keys = Object.keys(req.body)
-		// value.forEach(el => {})
+
 		for(let i = 0; i < values.length; i++) {
 			TransactionItem.update({ amount: values[i] }, {
 				where: {
@@ -49,28 +44,20 @@ class TransController {
 					ItemId: +keys[i]
 				}
 			})
-			
 			.then(data => {
 		
 			})
 			.catch(err => {
 				res.send(err)
 			})
-
 		}
-	
 			res.redirect("/transactions")
-		// res.send(Object.values(req.body))
-
-
-		// res.send("Mengubah transaksi ini. hanya dapat dilakukan pada status paid: false")
 	}
 
 	static deleteTrans(req, res) {
-		// Transaction.destroy({
 		Transaction.destroy({
 			where: {
-				id: req.params.id
+				id: +req.params.id
 			}
 		})
 			.then(data => {
@@ -94,10 +81,6 @@ class TransController {
 			.catch(err => {
 				res.send(err)
 			})
-		//   Transaction.update({isPaid: true}, {
-		//     where: {
-		//       id: +req.params.id
-
 	}
 }
 

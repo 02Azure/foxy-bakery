@@ -2,7 +2,7 @@
 <html lang="en">
     <%- include("components/head", {title: "Foxy Bakery - Edit Transaction"}); %>
 <body>
-    <h1></h1>
+    <h1>Edit Transaction</h1>
     <%- include("components/nav"); %>
     <form action="/transactions/edit/<%= data.id %>" method="post">
         <%data.Items.forEach(el => {%>
