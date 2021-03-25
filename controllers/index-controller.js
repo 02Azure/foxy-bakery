@@ -1,4 +1,5 @@
 const {User} = require("../models")
+const checkPassword = require("../helpers/checkPassword")
 
 class IndexController {
 	static showMainPage(req, res) {
@@ -19,7 +20,7 @@ class IndexController {
     })
       .then(data => {
         if(data) {
-          if(input.password === data.password) {
+          if(checkPassword(input.password, data.password)) {
             req.session.isLoggedIn = true
             req.session.userId = data.id
 
