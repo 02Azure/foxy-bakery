@@ -6,7 +6,7 @@
     <%- include("components/nav"); %>
     <form action="/transactions/edit/<%= data.id %>" method="post">
         <%data.Items.forEach(el => {%>
-         <label for="<%=`el${el.id}`%>"><%=el.name%>  <%=el.harga%></label><br>
+         <label for="<%=`el${el.id}`%>"><%=el.name%>  <%=el.harga()%></label><br>
          <p><%=el.desc%></p>
          <input type="number" id="<%=`el${el.id}`%>" name="<%=el.id%>" value="<%=el.TransactionItem.amount %>"><br><br><br> 
         <%})%>

@@ -17,10 +17,15 @@
       <%transactions.forEach(transaction => {%>
         <tr>
           <td><%=transaction.id%></td>
-          <td>
-            <%=transaction.date%>
+          <td><%=transaction.date%></td>
+          <td>       
+          <%let totalPurchase = transaction.Items%>
+          <%let total =0%>
+          <%totalPurchase.forEach(trans => {%>
+            <%total += trans.price * trans.TransactionItem.amount%>
+           <%})%>
+            <%=total%>
           </td>
-          <td><%=transaction.total%></td>
           <td>
             <%if(transaction.isPaid) {%>
               <b>Paid</b>
